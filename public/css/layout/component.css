@@ -1,0 +1,28 @@
+/* =================== COMPONENTS =================== */
+.title-icon {
+    margin-right: 12px;
+    font-size: 20px;
+    color: #144a6e;
+}
+
+/* Priority Labels */
+.priority-urgent {
+    background-color: #802d2d;
+    color: white;
+}
+.priority-top-urgent {
+    background-color: #cc0000;
+    color: white;
+}
+.priority-medium {
+    background-color: #ffc107;
+    color: #212529;
+}
+.priority-low {
+    background-color: #6c757d;
+    color: white;
+}
+.priority-default {
+    background-color: #f8f9fa;
+    color: #769dc3;
+}

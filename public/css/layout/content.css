@@ -1,0 +1,41 @@
+/* =================== PAGE WRAPPER =================== */
+#main-wrapper {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh; /* full height */
+}
+
+.page-wrapper {
+    flex: 1;
+    margin-top: 60px;  /* tinggi topbar */
+    margin-left: 250px; /* lebar sidebar */
+    padding: 0 0px;
+    overflow-y: auto;
+    background-color: #c97373;
+    min-height: calc(100vh - 60px);
+    transition: margin-left 0.3s ease;
+}
+
+.page-wrapper .container-fluid {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+}
+
+
+body.mini-sidebar .page-wrapper {
+    margin-left: 80px;
+}
+
+ /* CSS UNTUK WARNA BAIGROUND UTAMA */
+.page-wrapper {
+    background: linear-gradient(to bottom right, 
+        rgb(249, 249, 249) 0%,     /* warna awal (hijau lembut) */
+        rgb(255, 255, 255) 50%,    /* warna tengah (biru muda) */
+        rgb(255, 255, 255) 100%    /* warna akhir (ungu/pink pastel) */
+    ) !important;
+    min-height: 50vh;
+    padding: 25px;
+}

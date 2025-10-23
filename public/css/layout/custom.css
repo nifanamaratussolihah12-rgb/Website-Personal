@@ -1,0 +1,40 @@
+/* =================== CUSTOM / RESPONSIVE =================== */
+
+/* Responsif: Sidebar dan Topbar */
+@media (max-width: 992px) {
+    .topbar {
+        left: 0 !important;
+    }
+
+    .page-wrapper {
+        margin-left: 0 !important;
+    }
+
+    .left-sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+}
+
+/* Disabled links (misal logo AMS) */
+.disabled-link {
+    pointer-events: none;
+    cursor: default;
+}
+
+/* Samakan lebar konten utama seperti .page-header di beranda */
+.page-wrapper .container-fluid {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
+
+/* Kalau ada .card di dalam container-fluid */
+.page-wrapper .container-fluid .card {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+}
+

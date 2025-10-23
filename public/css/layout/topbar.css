@@ -1,0 +1,90 @@
+/* =================== TOPBAR =================== */
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 250px; /* sejajar sidebar */
+    right: 0;
+    height: 56px;
+    background: #86bde2; /* warna biru tua */
+    display: flex;
+    align-items: center;
+    z-index: 1100;
+    transition: left 0.3s ease;
+}
+
+body.mini-sidebar .topbar {
+    left: 80px; /* kalau sidebar dikecilkan */
+}
+
+/* Navbar */
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .nav-item {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .nav-link {
+    color: #fff;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s ease;
+}
+
+.navbar .nav-link:hover {
+    background-color: rgba(216, 40, 40, 0.1);
+    border-radius: 8px;
+}
+
+/* Notifikasi */
+.navbar .nav-link .badge {
+    font-size: 10px;
+    min-width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Dropdown */
+.dropdown-menu {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 6px 18px rgba(187, 75, 75, 0.717);
+}
+
+.dropdown-item {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+}
+
+.dropdown-item:hover {
+    background-color: #f5f7fa;
+}
+
+/* Styling bebas, tidak akan kena JS bawaan */
+.topbar-custom {
+    background-color: rgb(251, 251, 251);
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+}
+
+/* CSS UNTUK WARNA TOP BARRRRRR */
+#navbarSupportedContent {
+    /* Linear gradient dari kiri ke kanan */
+    background: linear-gradient(90deg, 
+        rgb(75, 65, 183)  0%,      /* warna awal */
+        rgb(158, 206, 236) 50%,      /* warna tengah */
+        rgb(151, 93, 222) 100%        /* warna akhir */
+    ) !important;
+}
