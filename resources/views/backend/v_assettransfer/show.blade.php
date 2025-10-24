@@ -1,23 +1,20 @@
 @extends('backend.v_layouts.app')
 
 @section('content')
-<div class="container">
-    <h4>Detail Formulir Peralihan Asset IT</h4>
+<div class="card shadow-sm border-0">
 
     {{-- Pemilik Sebelumnya --}}
-    <h5 class="mt-3">Pemilik Sebelumnya</h5>
     <div class="card mb-3">
         <div class="card-body">
+            <h4>📝 Detail Formulir Peralihan Asset IT</h4>
+            <br>
+            <h5 class="mt-3">Pemilik Sebelumnya</h5>
             <p><strong>Departemen:</strong> {{ $transfer->prev_user ?? '-' }}</p>
             <p><strong>Pengguna:</strong> {{ $transfer->prev_department ?? '-' }}</p>
             <p><strong>Alasan Pengalihan:</strong> {{ $transfer->transfer_reason ?? '-' }}</p>
-        </div>
-    </div>
 
-    {{-- Pemilik Baru --}}
-    <h5 class="mt-3">Pemilik Baru</h5>
-    <div class="card mb-3">
-        <div class="card-body">
+            <br>
+            <h5 class="mt-3">Pemilik Baru</h5>
             <p><strong>Departemen:</strong> {{ $transfer->new_department ?? '-' }}</p>
             <p><strong>Pengguna:</strong> {{ $transfer->new_user ?? '-' }}</p>
             <p><strong>Tanggal Peralihan:</strong> {{ $transfer->transfer_date ? $transfer->transfer_date->format('d-m-Y') : '-' }}</p>
@@ -37,10 +34,9 @@
                 @endif
             </p>
             <p><strong>Catatan:</strong> {{ $transfer->catatan ?? '-' }}</p>
-        </div>
-    </div>
 
-    {{-- Detail Asset --}}
+            <br>
+            {{-- Detail Asset --}}
     <h5 class="mt-3">Detail Asset</h5>
     <table class="table table-bordered">
         <tbody>
@@ -86,10 +82,9 @@
         </tbody>
     </table>
 
+    <br>
     {{-- Status + Catatan --}}
     <h5 class="mt-3">Status + Catatan</h5>
-    <div class="card mb-3">
-        <div class="card-body">
             {{-- Status + Catatan --}}
             <p>
                 <strong>Status:</strong> 
@@ -104,9 +99,12 @@
                 @endif
             </p>
             <p><strong>Catatan:</strong> {{ $transfer->catatan ?? '-' }}</p>
-        </div>
     </div>
-
-    <a href="{{ route('backend.assettransfer.index') }}" class="btn btn-secondary mt-3">Kembali</a>
 </div>
+</div>
+<a href="{{ route('backend.assettransfer.index') }}" 
+   class="btn btn-secondary mt-3 d-block mx-auto text-center" 
+   style="width: 150px;">
+   Kembali
+</a>
 @endsection
