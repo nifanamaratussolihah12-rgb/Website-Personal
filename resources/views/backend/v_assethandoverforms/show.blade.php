@@ -1,17 +1,20 @@
 @extends('backend.v_layouts.app')
 
 @section('content')
-<div class="container">
-    <h4>Detail Formulir Serah Terima Asset IT</h4>
+<div class="card shadow-sm border-0">
 
-    <h5>Diajukan Oleh</h5>
     <div class="card mb-3">
         <div class="card-body">
+            <h4>📝 Detail Formulir Serah Terima Asset IT</h4>
+            <br>
+            <h5>Diajukan Oleh</h5>
             <p><strong>Nama :</strong> {{ $handover->nama_user }}</p>
             <p><strong>Nik:</strong> {{ $handover->nik_user }}</p>
             <p><strong>Departemen:</strong> {{ $handover->dept ?? '-' }}</p>
             <p><strong>Section:</strong> {{ $handover->section ?? '-' }}</p>
-            <p><strong>Tanggal:</strong> {{ $handover->tanggal ? $handover->tanggal->format('d-m-Y') : '-'}}</p>
+            <p><strong>Tanggal:</strong> 
+                {{ $handover->tanggal ? $handover->tanggal->translatedFormat('d F Y') : '-' }}
+            </p>
             {{-- Status + Catatan --}}
             <p>
                 <strong>Status:</strong> 
@@ -26,10 +29,8 @@
                 @endif
             </p>
             <p><strong>Catatan:</strong> {{ $handover->catatan ?? '-' }}</p>
-        </div>
-    </div>
-
-    <h5>Detail Asset</h5>
+            <br>
+            <h5>Detail Asset</h5>
     <table class="table table-bordered">
         <tbody>
             <tr>
@@ -42,8 +43,8 @@
             </tr>
             <tr>
                 <th>Nama Asset</th>
-                <td>Brand {{ $handover->brand_asset ?? '-' }}</td>
-                <td>Model {{ $handover->model_asset ?? '-' }}</td>
+                <td>Brand : {{ $handover->brand_asset ?? '-' }}</td>
+                <td>Model : {{ $handover->model_asset ?? '-' }}</td>
             </tr>
                 <th>Asset Tag</th>
                 <td>{{ $handover->asset_tag ?? '-' }}</td>
@@ -59,15 +60,23 @@
         </tbody>
     </table>
 
+    <br>
     <h5>Diserahkan Oleh</h5>
     <div class="card mb-3">
         <div class="card-body">
             <p><strong>Nama:</strong> {{ $handover->handover_by }}</p>
             <p><strong>NIK:</strong> {{ $handover->handover_by_nik ?? '-' }}</p>
-            <p><strong>Tanggal Serah:</strong> {{ $handover->handover_date ? $handover->handover_date->format('d-m-Y') : '-' }}</p>
+            <p><strong>Tanggal Serah:</strong> 
+                {{ $handover->handover_date ? $handover->handover_date->translatedFormat('d F Y') : '-' }}
+            </p>
         </div>
     </div>
-
-    <a href="{{ route('backend.assethandoverforms.index') }}" class="btn btn-secondary mt-3">Kembali</a>
+    </div>
+    </div>
 </div>
+<a href="{{ route('backend.assethandoverforms.index') }}" 
+   class="btn btn-secondary mt-3 d-block mx-auto text-center" 
+   style="width: 150px;">
+   Kembali
+</a>
 @endsection
