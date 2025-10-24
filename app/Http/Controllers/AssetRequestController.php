@@ -24,16 +24,18 @@ class AssetRequestController extends Controller
     // Menampilkan halaman buat permintaan baru
     public function create()
     {
-        $assets = \App\Models\Asset::where('qty', '>', 0)
+        $asset = \App\Models\Asset::where('qty', '>', 0)
                     ->orderBy('item_name') // urut A-Z
                     ->get();
 
-        return view('backend.v_assetrequest.create', compact('assets'));
+        return view('backend.v_assetrequest.create', compact('asset'));
     }
 
     // Simpan data permintaan asset
     public function store(Request $request)
     {
+        //dd($request->details);
+
         $validated = $request->validate([
             'request_type' => 'required|string|max:255',
             'request_type_extra'  => 'nullable|string|max:255',
@@ -109,12 +111,18 @@ class AssetRequestController extends Controller
             $data['new_asset_number'] = $newAssetNumber;
         }
 
+        // Filter detail: hanya simpan yang punya asset_id
+        $filteredDetails = collect($request->details)
+            ->filter(fn($d) => !empty($d['asset_id']))
+            ->values()
+            ->toArray();
+
         try {
             // Simpan data request
             $requestData = AssetRequest::create($data);
 
             // **Tambahkan disini**: kurangi qty asset dan simpan pivot
-            foreach($request->details as $detail){
+            foreach($filteredDetails as $detail){
                 $asset = \App\Models\Asset::find($detail['asset_id']);
                 if($asset->qty >= $detail['qty']){
                     $asset->qty -= $detail['qty'];
@@ -156,6 +164,11 @@ class AssetRequestController extends Controller
                 ->back()
                 ->with('success', 'Formulir permintaan asset berhasil diajukan!');
 
+            // } catch (\Exception $e) {
+            //     dd($e->getMessage(), $e->getTraceAsString());
+            //     \Log::error("Gagal simpan form permintaan: " . $e->getMessage());
+            //     return redirect()->back()->withErrors(['error' => $e->getMessage()])->withInput();
+            // }
         } catch (\Exception $e) {
             \Log::error("Gagal simpan form permintaan: " . $e->getMessage());
             return redirect()->back()->withErrors(['error' => $e->getMessage()])->withInput();

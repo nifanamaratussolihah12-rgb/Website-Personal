@@ -1,12 +1,13 @@
 @extends('backend.v_layouts.app')
 
 @section('content')
-<div class="container">
-    <h4>Detail Formulir Permintaan Asset IT</h4>
+<div class="card shadow-sm border-0">
 
     {{-- Request By --}}
     <div class="card mb-3">
         <div class="card-body">
+            <h4>📝 Detail Formulir Permintaan Asset IT</h4>
+            <br>
             <p>
                 <strong>Tipe Request</strong> : 
                 {{ $requestData->request_type ?? '-' }}
@@ -74,6 +75,10 @@
             </table>
         </div>
     </div>
-    <a href="{{ route('backend.assetrequest.index') }}" class="btn btn-secondary mt-3">Kembali</a>
 </div>
+<a href="{{ route('backend.assetrequest.index') }}" 
+   class="btn btn-secondary mt-3 d-block mx-auto text-center" 
+   style="width: 150px;">
+   Kembali
+</a>
 @endsection

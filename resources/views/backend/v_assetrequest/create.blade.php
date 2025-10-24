@@ -83,19 +83,13 @@
                         </select>
                     </div>
 
-                    {{-- Item Asset --}}
-                    <div class="form-group mb-2">
+                    <div class="col-md-6 mb-2">
                         <label for="asset_id">Item Asset</label>
-                        <select name="details[0][asset_id]" id="asset_id"
-                            class="form-control border border-dark @error('details.0.asset_id') is-invalid @enderror"
-                            required>
+                        <select name="details[0][asset_id]" id="asset_id" class="form-select border border-dark" required>
                             <option value="">-- Pilih Item --</option>
-                            @foreach($assets->sortBy('item_name') as $a)
-                                @php
-                                    // Tentukan label tambahan: room kalau ada, kalau gak ada pakai user
-                                    $labelTambahan = $a->room ?: $a->user;
-                                @endphp
-                                <option value="{{ $a->id }}" data-type="{{ $a->asset_type }}">
+                            @foreach($asset->sortBy('item_name') as $a)
+                                @php $labelTambahan = $a->room ?: $a->user; @endphp
+                                <option value="{{ $a->id }}">
                                     {{ Str::limit($a->item_name, 25) }}
                                     {{ $labelTambahan ? ' (' . $labelTambahan . ')' : '' }}
                                     (Sisa: {{ $a->qty }})
@@ -117,6 +111,7 @@
                         </div>
                         <div class="col-md-2">
                             <input type="number" name="details[0][qty]" class="form-control border border-dark" placeholder="Qty" required min="1">
+                            <small class="text-muted fst-italic">*Jumlah qty harus disesuaikan dengan stok tersedia</small>
                         </div>
                         <div class="col-md-3">
                             <input type="text" name="details[0][user_pic]" class="form-control border border-dark" placeholder="User / PIC" required>

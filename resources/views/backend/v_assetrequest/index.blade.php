@@ -65,7 +65,7 @@
                             <i class="fas fa-print" style="font-size:11px;"></i>
                         </a>
 
-                        @if(auth()->check() && auth()->user()->role == 0,1)
+                        @if(auth()->check() && in_array(auth()->user()->role, [0,1]))
                         <a href="{{ route('backend.assetrequest.edit', $row->id) }}" 
                            class="btn btn-outline-primary btn-sm d-flex align-items-center justify-content-center" 
                            style="width:36px; height:30px; font-size:11px;" title="Edit">

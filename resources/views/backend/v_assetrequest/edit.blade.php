@@ -1,7 +1,7 @@
 @extends('backend.v_layouts.app')
 
 @section('content')
-<div class="container">
+<div class="card shadow-sm border-0">
     <div class="card shadow rounded-3">
         <div class="card-header bg-warning text-dark">
             <h4 class="mb-0">✏️ Edit Formulir Permintaan Asset IT</h4>
