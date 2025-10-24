@@ -1,7 +1,7 @@
 @extends('backend.v_layouts.app')
 
 @section('content')
-<div class="container">
+<div class="card shadow-sm border-0">
     <div class="card shadow rounded-3">
         <div class="card-header bg-primary text-white">
             <h4 class="mb-0">Formulir Permintaan Asset IT</h4>
@@ -83,13 +83,22 @@
                         </select>
                     </div>
 
-                    <div class="col-md-6 mb-2">
+                    {{-- Item Asset --}}
+                    <div class="form-group mb-2">
                         <label for="asset_id">Item Asset</label>
-                        <select name="details[0][asset_id]" id="asset_id" class="form-select border border-dark" required>
+                        <select name="details[0][asset_id]" id="asset_id"
+                            class="form-control border border-dark @error('details.0.asset_id') is-invalid @enderror"
+                            required>
                             <option value="">-- Pilih Item --</option>
-                            @foreach($assets as $asset)
-                                <option value="{{ $asset->id }}" data-type="{{ $asset->asset_type }}">
-                                    {{ $asset->item_name }} (Sisa: {{ $asset->qty }})
+                            @foreach($assets->sortBy('item_name') as $a)
+                                @php
+                                    // Tentukan label tambahan: room kalau ada, kalau gak ada pakai user
+                                    $labelTambahan = $a->room ?: $a->user;
+                                @endphp
+                                <option value="{{ $a->id }}" data-type="{{ $a->asset_type }}">
+                                    {{ Str::limit($a->item_name, 25) }}
+                                    {{ $labelTambahan ? ' (' . $labelTambahan . ')' : '' }}
+                                    (Sisa: {{ $a->qty }})
                                 </option>
                             @endforeach
                         </select>
