@@ -1,14 +1,14 @@
 @extends('backend.v_layouts.app')
 
 @section('content')
-<div class="container">
-    <h4>Detail Formulir Permintaan Perbaikan Perangkat IT (F3PIT)</h4>
+<div class="card shadow-sm border-0">
 
-    {{-- Status + Catatan --}}
-    <h5 class="mt-3">Status + Catatan</h5>
     <div class="card mb-3">
         <div class="card-body">
+            <h4>📝 Detail Formulir Permintaan Perbaikan Perangkat IT (F3PIT)</h4>
+            <br>
             {{-- Status + Catatan --}}
+             <h5 class="mt-3">Status + Catatan</h5>
             <p>
                 <strong>Status:</strong> 
                 @if($form->status == 'pending approval')
@@ -22,24 +22,21 @@
                 @endif
             </p>
             <p><strong>Catatan:</strong> {{ $form->catatan ?? '-' }}</p>
-        </div>
-    </div>
 
-    {{-- TABEL SEBELAH KIRI --}}
-    <div class="card mb-3">
-        <div class="card-body" style="font-size:13px;">
+            <hr>
+            {{-- TABEL SEBELAH KIRI --}}
             <p><strong>Departemen:</strong> {{ $form->departement ?? '-' }}</p>
             <p><strong>PIC:</strong> {{ $form->pic ?? '-' }}</p>
             <p><strong>Jabatan:</strong> {{ $form->jabatan ?? '-' }}</p>
             <p><strong>Kode Inventaris:</strong> {{ $form->kode_inventaris ?? '-' }}</p>
-            <p><strong>Tahun Perolehan:</strong> {{ $form->tahun_perolehan ? \Carbon\Carbon::parse($form->tahun_perolehan)->format('d-m-Y') : '-' }}</p>
+            <p><strong>Tahun Perolehan:</strong> {{ $form->tahun_perolehan ? \Carbon\Carbon::parse($form->tahun_perolehan)->translatedFormat('d F Y') : '-' }}</p>
             <p><strong>Jenis Inventaris:</strong> {{ $form->jenis_inventaris ?? '-' }}</p>
             <p><strong>Brand:</strong> {{ $form->brand ?? '-' }}</p>
             <p><strong>Tipe:</strong> {{ $form->tipe ?? '-' }}</p>
             <p><strong>S/N:</strong> {{ $form->sn ?? '-' }}</p>
 
             <h6 class="mt-3 text-decoration-underline">Sejarah Perbaikan</h6>
-            <p><strong>Tanggal:</strong> {{ $form->sejarah_tanggal ? \Carbon\Carbon::parse($form->sejarah_tanggal)->format('d-m-Y') : '-' }}</p>
+            <p><strong>Tanggal:</strong> {{ $form->sejarah_tanggal ? \Carbon\Carbon::parse($form->sejarah_tanggal)->translatedFormat('d F Y') : '-' }}</p>
             <p><strong>Keterangan:</strong> {{ $form->sejarah_keterangan ?? '-' }}</p>
 
             <h6 class="mt-1 text-decoration-underline">Deskripsi Permasalahan</h6>
@@ -79,13 +76,9 @@
                     </tr>
                 </table>
             @endif
-        </div>
-    </div>
 
-
-    {{-- TABEL SEBELAH KANAN --}}
-    <div class="card mb-3">
-        <div class="card-body" style="font-size:13px;">
+            <hr>
+            {{-- TABEL SEBELAH KANAN --}}
             <h6 class="mt-3 text-decoration-underline">Kondisi Fisik Penyerahan Perangkat</h6>
             <p>{{ $form->kondisi_fisik ?? '-' }}</p>
             <p><strong>Prioritas Pengerjaan:</strong> 
@@ -126,8 +119,8 @@
                             @endif
 
             <p><strong>Diterima dan diperiksa fisik oleh:</strong> {{ $form->diterima_oleh ?? '-' }}</p>
-            <p><strong>Tanggal:</strong> {{ $form->tanggal ? \Carbon\Carbon::parse($form->tanggal)->format('d-m-Y') : '-' }}</p>
-            <p><strong>Garansi Sebelumnya:</strong> {{ $form->garansi_sebelumnya ? \Carbon\Carbon::parse($form->garansi_sebelumnya)->format('d-m-Y') : '-' }}</p>
+            <p><strong>Tanggal:</strong> {{ $form->tanggal ? \Carbon\Carbon::parse($form->tanggal)->translatedFormat('d F Y') : '-' }}</p>
+            <p><strong>Garansi Sebelumnya:</strong> {{ $form->garansi_sebelumnya ? \Carbon\Carbon::parse($form->garansi_sebelumnya)->translatedFormat('d F Y') : '-' }}</p>
             <p><strong>Pemeriksaan teknis Oleh:</strong> {{ $form->pemeriksaan_teknis_oleh ?? '-' }}</p>
 
             <p><strong> @if(!empty($form->diputuskan_internal_it['setuju']))
@@ -142,7 +135,7 @@
             
             
             <p><strong>Hasil Perbaikan diperiksa oleh:</strong> {{ $form->hasil_diperiksa_oleh ?? '-' }}</p>
-            <p><strong>Tgl:</strong> {{ $form->hasil_diperiksa_tgl ? \Carbon\Carbon::parse($form->hasil_diperiksa_tgl)->format('d-m-Y') : '-' }}</p>
+            <p><strong>Tgl:</strong> {{ $form->hasil_diperiksa_tgl ? \Carbon\Carbon::parse($form->hasil_diperiksa_tgl)->translatedFormat('d F Y') : '-' }}</p>
 
             @if($form->sn_sesuai || $form->bukti_penggantian)
                                 <ul style="margin:0; padding-left:12px;">
@@ -158,9 +151,10 @@
                             @endif
         </div>
     </div>
-
-    <div class="mt-3">
-        <a href="{{ route('backend.f3pit.index') }}" class="btn btn-secondary">Kembali</a>
-    </div>
 </div>
+<a href="{{ route('backend.f3pit.index') }}" 
+   class="btn btn-secondary mt-3 d-block mx-auto text-center" 
+   style="width: 150px;">
+   Kembali
+</a>
 @endsection

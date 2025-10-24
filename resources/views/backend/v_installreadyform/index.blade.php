@@ -32,7 +32,7 @@
                     <td class="text-center px-2 py-1" style="font-size:13px;">
                         {{ 'ITSI-AKM/RD.01/' . (!empty($row->tanggal) ? \Carbon\Carbon::parse($row->tanggal)->format('Y') : date('Y')) }}
                     </td>
-                    <td class="text-center px-2 py-1" style="font-size:13px;">{{ \Carbon\Carbon::parse($row->tanggal)->format('d-m-Y') }}</td>
+                    <td class="text-center px-2 py-1" style="font-size:13px;">{{ \Carbon\Carbon::parse($row->tanggal)->translatedFormat('d F Y') }}</td>
                     <td class="text-center px-2 py-1" style="font-size:13px;">{{ $row->lokasi ?? '-' }}</td>
 
                     {{-- STATUS --}}

@@ -29,7 +29,7 @@
                 <tr>
                     <td class="text-center px-2 py-1" style="font-size:13px;">{{ $key + 1 }}</td>
                     <td class="text-center px-2 py-1" style="font-size:13px;">{{ $memo->nomor ?? '-' }}</td>
-                    <td class="text-center px-2 py-1" style="font-size:13px;">{{ $memo->tanggal_memo?->format('d-m-Y') ?? 'N/A' }}</td>
+                    <td class="text-center px-2 py-1" style="font-size:13px;">{{ $memo->tanggal_memo?->translatedFormat('d F Y') ?? 'N/A' }}</td>
                     {{-- STATUS --}}
                     <td class="text-center px-2 py-1" style="font-size:13px;">
                         @if($memo->status == 'pending approval')

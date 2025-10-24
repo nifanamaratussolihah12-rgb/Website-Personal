@@ -31,7 +31,7 @@
                     <td class="text-center px-2 py-1" style="font-size:13px;">
                         {{ 'ITSI-AKM/RA.01/' . (!empty($row->tanggal) ? \Carbon\Carbon::parse($row->tanggal)->format('Y') : date('Y')) }}
                     </td>
-                    <td class="text-center px-2 py-1" style="font-size:13px;">{{ $row->created_at?->format('d-m-Y') ?? 'N/A' }}</td>
+                    <td class="text-center px-2 py-1" style="font-size:13px;">{{ $row->created_at?->translatedFormat('d F Y') ?? 'N/A' }}</td>
 
                     {{-- STATUS --}}
                     <td class="text-center px-2 py-1" style="font-size:13px;">

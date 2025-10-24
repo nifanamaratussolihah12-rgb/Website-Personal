@@ -32,7 +32,7 @@
                     <td class="text-center px-2 py-1" style="font-size:13px;">
                         {{ 'ITSI-AKM/F3.01/' . (!empty($row->tanggal) ? \Carbon\Carbon::parse($row->tanggal)->format('Y') : date('Y')) }}
                     </td>
-                    <td class="text-center px-2 py-1" style="font-size:13px;">{{ \Carbon\Carbon::parse($row->tanggal)->format('d-m-Y') }}</td>
+                    <td class="text-center px-2 py-1" style="font-size:13px;">{{ \Carbon\Carbon::parse($row->tanggal)->translatedFormat('d F Y') }}</td>
                     <td class="text-center px-2 py-1" style="font-size:13px;">{{ $row->departement ?? '-' }}</td>
 
                     {{-- STATUS --}}
@@ -66,7 +66,7 @@
                             <i class="fas fa-print" style="font-size:11px;"></i>
                         </a>
 
-                        @if(auth()->check() && auth()->user()->role == 0,1)
+                        @if(auth()->check() && in_array(auth()->user()->role, [0,1]))
                         <a href="{{ route('backend.f3pit.edit', $row->id) }}" 
                            class="btn btn-outline-primary btn-sm d-flex align-items-center justify-content-center" 
                            style="width:36px; height:30px; font-size:11px;" title="Edit">

@@ -17,8 +17,8 @@
             <p><strong>Lokasi:</strong> {{ $order->lokasi ?? '-' }}</p>
             <p><strong>Details:</strong> {{ $order->details ?? '-' }}</p>
             <p><strong>Dokumen Di Terima:</strong> {{ $order->dokumen_diterima ?? '-' }}</p>
-            <p><strong>Target Pengerjaan:</strong> {{ $order->target_pengerjaan ? \Carbon\Carbon::parse($order->target_pengerjaan)->format('d-m-Y') : '-' }}</p>
-            <p><strong>Tanggal Dibuat:</strong> {{ $order->tanggal ? \Carbon\Carbon::parse($order->tanggal)->format('d-m-Y') : '-' }}</p>
+            <p><strong>Target Pengerjaan:</strong> {{ $order->target_pengerjaan ? \Carbon\Carbon::parse($order->target_pengerjaan)->translatedFormat('d F Y') : '-' }}</p>
+            <p><strong>Tanggal Dibuat:</strong> {{ $order->tanggal ? \Carbon\Carbon::parse($order->tanggal)->translatedFormat('d F Y') : '-' }}</p>
             {{-- Status + Catatan --}}
             <p>
                 <strong>Status:</strong> 

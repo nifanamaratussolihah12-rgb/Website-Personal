@@ -1,13 +1,15 @@
 @extends('backend.v_layouts.app')
 
 @section('content')
-<div class="container">
-    <h4>Detail Formulir Memo</h4>
+<div class="card shadow-sm border-0">
 
-    {{-- Bagian Disposisi --}}
-    <h6 class="mt-3">Disposisi</h6>
     <div class="card mb-3" style="font-size:12px;">
         <div class="card-body">
+            <h4>📝 Detail Formulir Memo</h4>
+            <br>
+
+            {{-- Bagian Disposisi --}}
+            <h6 class="mt-3">Disposisi</h6>
             <p><strong>TGL & No. Surat:</strong> {{ $memo->tgl_no_surat ?? '-' }}</p>
             @php
                 $perihals = is_array($memo->perihal) ? $memo->perihal : json_decode($memo->perihal, true);
@@ -16,7 +18,7 @@
             <p><strong>Lampiran:</strong> {{ $memo->lampiran ?? '-' }}</p>
             <p><strong>Dari:</strong> {{ $memo->dari_disposisi ?? '-' }}</p>
             <p><strong>Tanggal Disposisi:</strong> 
-                {{ $memo->tanggal_disposisi ? \Carbon\Carbon::parse($memo->tanggal_disposisi)->format('d-m-Y') : '-' }}
+                {{ $memo->tanggal_disposisi ? \Carbon\Carbon::parse($memo->tanggal_disposisi)->translatedFormat('d F Y') : '-' }}
             </p>
 
             <table style="width:100%; border:1px solid black; border-collapse: collapse; margin-top:-1px;">
@@ -63,38 +65,28 @@
                     @endif
                 </tbody>
             </table>
-        </div>
-    </div>
 
-    {{-- Bagian Memo --}}
-    <h6 class="mt-4">Memo</h6>
-    <div class="card mb-3" style="font-size:12px;">
-        <div class="card-body">
+            <hr>
+            {{-- Bagian Memo --}}
+            <h6 class="mt-4">Memo</h6>
             <p><strong>Tempat:</strong> {{ $memo->lokasi_memo ?? '-' }}</p>
-            <p><strong>Tanggal:</strong> {{ $memo->tanggal_memo ? \Carbon\Carbon::parse($memo->tanggal_memo)->format('d-m-Y') : '-' }}</p>
+            <p><strong>Tanggal:</strong> {{ $memo->tanggal_memo ? \Carbon\Carbon::parse($memo->tanggal_memo)->translatedFormat('d F Y') : '-' }}</p>
             <p><strong>Nomor Memo:</strong> {{ $memo->nomor ?? '-' }}</p>
             <p><strong>Kepada:</strong> {{ $memo->kepada ?? '-' }}</p>
             <p><strong>Dari:</strong> {{ $memo->dari_memo ?? '-' }}</p>
             <p><strong>Perihal Memo:</strong> {!! nl2br(e($memo->perihal_memo)) !!}</p>
             <p><strong>Isi Memo:</strong><br> {!! $memo->isi !!}</p>
-        </div>
-    </div>
 
-    {{-- Bagian TTD --}}
-    <h6 class="mt-4">Tanda Tangan</h6>
-    <div class="card mb-3" style="font-size:12px;">
-        <div class="card-body">
+            <hr>
+            {{-- Bagian TTD --}}
+            <h6 class="mt-4">Tanda Tangan</h6>
             <p><strong>Disusun Oleh:</strong> {{ $memo->ttd_disusun_nama ?? '-' }} ({{ $memo->ttd_disusun_jabatan ?? '-' }})</p>
             <p><strong>Diperiksa Oleh:</strong> {{ $memo->ttd_diperiksa_nama ?? '-' }} ({{ $memo->ttd_diperiksa_jabatan ?? '-' }})</p>
             <p><strong>Disetujui Oleh:</strong> {{ $memo->ttd_disetujui_nama ?? '-' }} ({{ $memo->ttd_disetujui_jabatan ?? '-' }})</p>
-        </div>
-    </div>
 
-    {{-- Status + Catatan --}}
-    <h6 class="mt-4">Status & Catatan</h6>
-    <div class="card mb-3" style="font-size:12px;">
-        <div class="card-body">
+            <hr>
             {{-- Status + Catatan --}}
+            <h6 class="mt-4">Status & Catatan</h6>
             <p>
                 <strong>Status:</strong> 
                 @if($memo->status == 'pending approval')
@@ -110,9 +102,10 @@
             <p><strong>Catatan:</strong> {{ $memo->catatan ?? '-' }}</p>
         </div>
     </div>
-
-
-
-    <a href="{{ route('backend.memo.index') }}" class="btn btn-secondary mt-3">Kembali</a>
 </div>
+<a href="{{ route('backend.memo.index') }}" 
+   class="btn btn-secondary mt-3 d-block mx-auto text-center" 
+   style="width: 150px;">
+   Kembali
+</a>
 @endsection

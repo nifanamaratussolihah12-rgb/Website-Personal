@@ -17,7 +17,7 @@
             <h5 class="mt-3">Pemilik Baru</h5>
             <p><strong>Departemen:</strong> {{ $transfer->new_department ?? '-' }}</p>
             <p><strong>Pengguna:</strong> {{ $transfer->new_user ?? '-' }}</p>
-            <p><strong>Tanggal Peralihan:</strong> {{ $transfer->transfer_date ? $transfer->transfer_date->format('d-m-Y') : '-' }}</p>
+            <p><strong>Tanggal Peralihan:</strong> {{ $transfer->transfer_date ? $transfer->transfer_date->translatedFormat('d F Y') : '-' }}</p>
             <p><strong>Lokasi Penempatan:</strong> {{ $transfer->placement_location ?? '-' }}</p>
             <p><strong>Kondisi Asset:</strong> {{ $transfer->asset_condition ?? '-' }}</p>
             {{-- Status + Catatan --}}
@@ -59,7 +59,7 @@
             </tr>
             <tr>
                 <th>Tgl Pembelian</th>
-                <td>{{ $transfer->purchase_date ? $transfer->purchase_date->format('d-m-Y') : '-' }}</td>
+                <td>{{ $transfer->purchase_date ? $transfer->purchase_date->translatedFormat('d F Y') : '-' }}</td>
             </tr>
             <tr>
                 <th>Harga Pembelian</th>
@@ -77,7 +77,7 @@
             </tr>
             <tr>
                 <th>Tgl Akhir Garansi</th>
-                <td>{{ $transfer->warranty_end_date ? $transfer->warranty_end_date->format('d-m-Y') : '-' }}</td>
+                <td>{{ $transfer->warranty_end_date ? $transfer->warranty_end_date->translatedFormat('d F Y') : '-' }}</td>
             </tr>
         </tbody>
     </table>

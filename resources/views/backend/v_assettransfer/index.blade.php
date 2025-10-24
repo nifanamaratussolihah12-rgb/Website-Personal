@@ -33,7 +33,7 @@
                     <td class="text-center px-2 py-1" style="font-size:13px;">
                         {{ 'ITSI-AKM/PL.01/' . (!empty($row->tanggal) ? \Carbon\Carbon::parse($row->tanggal)->format('Y') : date('Y')) }}
                     </td>
-                    <td class="text-center px-2 py-1" style="font-size:13px;">{{ $row->transfer_date?->format('d-m-Y') ?? 'N/A' }}</td>
+                    <td class="text-center px-2 py-1" style="font-size:13px;">{{ $row->transfer_date?->translatedFormat('d F Y') ?? 'N/A' }}</td>
                     <td class="text-center px-2 py-1" style="font-size:13px;">{{ $row->new_user ?? 'N/A' }}</td>
                     <td class="text-center px-2 py-1" style="font-size:13px;">
                         {{ $row->asset_brand ?? '-' }}

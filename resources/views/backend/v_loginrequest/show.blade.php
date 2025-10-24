@@ -1,10 +1,10 @@
 @extends('backend.v_layouts.app')
 
 @section('content')
-<div class="container">
+<div class="card shadow-sm border-0">
     <div class="card shadow rounded-3">
         <div class="card-header bg-info text-white">
-            <h4 class="mb-0">📄 Detail Formulir Permintaan Login Email / Internet</h4>
+            <h4 class="mb-0">📝 Detail Formulir Permintaan Login Email / Internet</h4>
         </div>
         <div class="card-body">
 
@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-md-6 mb-2">
                     <label class="fw-bold">Tanggal</label>
-                    <p class="form-control border border-dark">{{ $loginRequest->tanggal?->format('d-m-Y') ?? '-' }}</p>
+                    <p class="form-control border border-dark">{{ $loginRequest->tanggal?->translatedFormat('d F Y') ?? '-' }}</p>
                 </div>
                 <div class="col-md-6 mb-2">
                     <label class="fw-bold">Cabang</label>
@@ -90,7 +90,7 @@
                 </div>
                 <div class="col-md-6 mb-2">
                     <label class="fw-bold">Tanggal Diterima</label>
-                    <p class="form-control border border-dark">{{ $loginRequest->tanggal_diterima?->format('d-m-Y') ?? '-' }}</p>
+                    <p class="form-control border border-dark">{{ $loginRequest->tanggal_diterima?->translatedFormat('d F Y') ?? '-' }}</p>
                 </div>
                 <div class="col-md-6 mb-2">
                     <label class="fw-bold">Alamat Email Login</label>
@@ -113,7 +113,7 @@
                 </div>
                 <div class="col-md-6 mb-2">
                     <label class="fw-bold">Tanggal Efektif</label>
-                    <p class="form-control border border-dark">{{ $loginRequest->tanggal_efektif?->format('d-m-Y') ?? '-' }}</p>
+                    <p class="form-control border border-dark">{{ $loginRequest->tanggal_efektif?->translatedFormat('d F Y') ?? '-' }}</p>
                 </div>
                 <div class="col-md-6 mb-2">
                     <label class="fw-bold">Dibuat Oleh</label>
@@ -121,7 +121,7 @@
                 </div>
                 <div class="col-md-6 mb-2">
                     <label class="fw-bold">Tanggal Dibuat</label>
-                    <p class="form-control border border-dark">{{ $loginRequest->tanggal_dibuat?->format('d-m-Y') ?? '-' }}</p>
+                    <p class="form-control border border-dark">{{ $loginRequest->tanggal_dibuat?->translatedFormat('d F Y') ?? '-' }}</p>
                 </div>
                 <div class="col-md-6 mb-2">
                     <label class="fw-bold">Catatan Tambahan</label>
@@ -134,11 +134,11 @@
             <div class="row">
                 <div class="col-md-6 mb-2">
                     <label class="fw-bold">Tanggal Dokumen Diterbitkan</label>
-                    <p class="form-control border border-dark">{{ $loginRequest->tanggal_dokumen?->format('d-m-Y') ?? '-' }}</p>
+                    <p class="form-control border border-dark">{{ $loginRequest->tanggal_dokumen?->translatedFormat('d F Y') ?? '-' }}</p>
                 </div>
                 <div class="col-md-6 mb-2">
                     <label class="fw-bold">Tanggal Dokumen Expired</label>
-                    <p class="form-control border border-dark">{{ $loginRequest->tanggal_expired?->format('d-m-Y') ?? '-' }}</p>
+                    <p class="form-control border border-dark">{{ $loginRequest->tanggal_expired?->translatedFormat('d F Y') ?? '-' }}</p>
                 </div>
                 <div class="col-md-6 mb-2">
                     <label class="fw-bold">Status</label>
