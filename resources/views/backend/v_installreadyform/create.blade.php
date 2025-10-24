@@ -1,7 +1,7 @@
 @extends('backend.v_layouts.app')
 
 @section('content')
-<div class="container">
+<div class="card shadow-sm border-0">
     <div class="card shadow rounded-3">
         <div class="card-header bg-primary text-white">
             <h4 class="mb-0">Formulir Readiness/Kesiapan Instalasi</h4>

@@ -1,7 +1,7 @@
 @extends('backend.v_layouts.app')
 
 @section('content')
-<div class="container">
+<div class="card shadow-sm border-0">
     <div class="card shadow rounded-3">
         <div class="card-header bg-primary text-white">
             <h4 class="mb-0">Formulir Finding</h4>
@@ -62,9 +62,19 @@
                 <h5 class="mt-4 text-decoration-underline">Bukti Temuan</h5>
                 <div class="row">
                     <div class="col-md-6 mb-2">
-                        <label for="bukti_temuan_foto">Upload Bukti Temuan</label>
-                        <input type="file" name="bukti_temuan_foto" id="bukti_temuan_foto" class="form-control border border-dark">
+                        <label for="bukti_temuan_foto" class="form-label">Upload Bukti Temuan</label>
+                        <input type="file" 
+                            name="bukti_temuan_foto" 
+                            id="bukti_temuan_foto" 
+                            accept="image/*"
+                            class="form-control border border-dark @error('bukti_temuan_foto') is-invalid @enderror">
+
+                        {{-- 📝 Note info upload --}}
+                        <small class="text-muted">
+                            *Hanya dapat mengunggah file foto (JPG, PNG, JPEG,) dengan ukuran maksimal 5 MB.
+                        </small>
                     </div>
+
                     <div class="col-md-6 mb-2">
                         <label for="bukti_temuan_text">Keterangan Bukti</label>
                         <textarea name="bukti_temuan_text" id="bukti_temuan_text" class="form-control border border-dark" rows="3" placeholder="Tuliskan keterangan bukti"></textarea>
