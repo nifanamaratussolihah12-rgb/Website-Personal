@@ -1,13 +1,14 @@
 @extends('backend.v_layouts.app')
 
 @section('content')
-<div class="container">
-    <h4>Detail Formulir Working Order</h4>
-
-    {{-- Informasi Utama --}}
-    <h5 class="mt-3">Informasi Utama</h5>
+<div class="card shadow-sm border-0">
     <div class="card mb-3">
         <div class="card-body">
+            <h4>📝 Detail Formulir Working Order</h4>
+
+            <br>
+            {{-- Informasi Utama --}}
+            <h5 class="mt-3">Informasi Utama</h5>
             <p><strong>Nama:</strong> {{ $order->nama ?? '-' }}</p>
             <p><strong>Divisi:</strong> {{ $order->divisi ?? '-' }}</p>
             <p><strong>Section:</strong> {{ $order->section ?? '-' }}</p>
@@ -32,10 +33,9 @@
                 @endif
             </p>
             <p><strong>Catatan:</strong> {{ $order->catatan ?? '-' }}</p>
-        </div>
-    </div>
 
-    {{-- IT & SI Preparation Checklist --}}
+            <br>
+            {{-- IT & SI Preparation Checklist --}}
 <h5 class="mt-3">IT & SI Preparation Checklist</h5>
 <table style="border:0.5px solid #000; border-collapse:collapse; width:100%; font-size:12px; margin-top:10px; text-align:center;">
     <thead>
@@ -104,6 +104,12 @@
         @endif
     </tbody>
 </table>
-    <a href="{{ route('backend.workingorder.index') }}" class="btn btn-secondary mt-3">Kembali</a>
+        </div>
+    </div>
 </div>
+<a href="{{ route('backend.workingorder.index') }}" 
+   class="btn btn-secondary mt-3 d-block mx-auto text-center" 
+   style="width: 150px;">
+   Kembali
+</a>
 @endsection
